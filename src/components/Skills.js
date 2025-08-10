@@ -139,19 +139,19 @@ const Skills = () => {
                 <h3 className="text-xl font-semibold text-white mb-4">{category.title}</h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div 
                     key={skill.name} 
-                    className="flex items-center p-3 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors duration-200"
+                    className="flex items-center p-2 sm:p-3 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: skillIndex * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <skill.icon className="text-primary-400 mr-3" size={18} />
-                    <span className="font-medium text-gray-200 text-sm">{skill.name}</span>
+                    <skill.icon className="text-primary-400 mr-2 sm:mr-3" size={16} />
+                    <span className="font-medium text-gray-200 text-xs sm:text-sm">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>

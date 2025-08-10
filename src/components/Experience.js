@@ -103,43 +103,43 @@ const Experience = () => {
                 <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg z-10"></div>
 
                 {/* Content card */}
-                <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
+                <div className={`ml-16 sm:ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
                   <motion.div
-                    className="bg-gray-800 p-6 rounded-xl shadow-lg ml-8 card-hover border border-gray-700"
+                    className="bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg ml-4 sm:ml-8 card-hover border border-gray-700"
                     whileHover={{ scale: 1.02 }}
                   >
                     {/* Header */}
-                    <div className="mb-4">
-                      <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-white bg-gradient-to-r ${exp.color} mb-3`}>
-                        <FaBriefcase className="mr-2" />
+                    <div className="mb-3 sm:mb-4">
+                      <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-white bg-gradient-to-r ${exp.color} mb-2 sm:mb-3`}>
+                        <FaBriefcase className="mr-1 sm:mr-2 text-xs sm:text-sm" />
                         {exp.type}
                       </div>
-                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                      <p className="text-primary-400 font-semibold">{exp.company}</p>
-                      <p className="text-sm text-gray-400 mb-4">{exp.period} • {exp.location}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">{exp.title}</h3>
+                      <p className="text-primary-400 font-semibold text-sm sm:text-base">{exp.company}</p>
+                      <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">{exp.period} • {exp.location}</p>
                     </div>
 
                     {/* Achievements */}
-                    <div className="mb-4">
-                      <h4 className="font-semibold text-white mb-3 flex items-center">
-                        <FaChartLine className="mr-2 text-primary-500" />
+                    <div className="mb-3 sm:mb-4">
+                      <h4 className="font-semibold text-white mb-2 sm:mb-3 flex items-center text-sm sm:text-base">
+                        <FaChartLine className="mr-1 sm:mr-2 text-primary-500 text-sm" />
                         Key Achievements
                       </h4>
-                      <ul className="space-y-2 list-disc list-inside">
+                      <ul className="space-y-3 sm:space-y-2 list-disc list-inside pl-2 sm:pl-0">
                         {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="text-gray-300 leading-relaxed marker:text-primary-400">{achievement}</li>
+                          <li key={achIndex} className="text-gray-300 leading-relaxed marker:text-primary-400 text-sm sm:text-base pr-2">{achievement}</li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Technologies */}
                     <div>
-                      <h4 className="font-semibold text-white mb-2">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-1 sm:gap-2">
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="bg-primary-900/50 text-primary-300 px-3 py-1 rounded-full text-sm font-medium border border-primary-700/50"
+                            className="bg-primary-900/50 text-primary-300 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium border border-primary-700/50"
                           >
                             {tech}
                           </span>

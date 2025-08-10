@@ -131,24 +131,24 @@ const Projects = () => {
                   </div>
 
                   {/* Project Stats */}
-                  <div className="mt-8">
-                    <h4 className="font-semibold text-white mb-2">Impact:</h4>
-                    <ul className="space-y-3 list-disc list-inside">
+                  <div className="mt-6 sm:mt-8">
+                    <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">Impact:</h4>
+                    <ul className="space-y-3 sm:space-y-2 list-disc list-inside pl-2 sm:pl-0">
                       {project.achievements.map((achievement, i) => (
-                        <li key={i} className="text-gray-300 text-sm font-medium marker:text-primary-400">{achievement}</li>
+                        <li key={i} className="text-gray-300 text-sm sm:text-base font-medium marker:text-primary-400 leading-relaxed pr-2">{achievement}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
                 {/* Technologies */}
-                <div className="lg:w-1/3 bg-gray-900 p-8">
-                  <h4 className="font-semibold text-white mb-4">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2">
+                <div className="lg:w-1/3 bg-gray-900 p-4 sm:p-6 lg:p-8">
+                  <h4 className="font-semibold text-white mb-3 sm:mb-4 text-sm sm:text-base">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {project.technologies.map((tech, techIndex) => (
                       <motion.span
                         key={techIndex}
-                        className="px-3 py-1 bg-primary-900/50 text-primary-300 rounded-full text-sm font-medium border border-primary-700/50"
+                        className="px-2 sm:px-3 py-1 bg-primary-900/50 text-primary-300 rounded-full text-xs sm:text-sm font-medium border border-primary-700/50"
                         whileHover={{ scale: 1.05, y: -2 }}
                       >
                         {tech}

@@ -24,7 +24,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-dark-900 to-black section-padding relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-dark-900 to-black section-padding relative overflow-hidden pt-20 sm:pt-24 md:pt-16">
       <MotionBackground />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
