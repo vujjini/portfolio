@@ -5,7 +5,7 @@ import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaChartLine } from 'react-i
 const Experience = () => {
   const experiences = [
     {
-      title: "Software Engineering Intern (Backend)",
+      title: "Software Engineer Intern (Backend)",
       company: "Givelify",
       location: "Remote",
       period: "May 2024 – Aug 2024",

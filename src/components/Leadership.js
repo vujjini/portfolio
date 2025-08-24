@@ -5,7 +5,7 @@ import { FaUsers, FaTrophy, FaChalkboardTeacher, FaHandshake } from 'react-icons
 const Leadership = () => {
   const leadershipRoles = [
     {
-      title: "Software Engineer",
+      title: "Software Engineering Lead",
       organization: "Association of Computing Machinery (ACM)",
       location: "Tampa, FL",
       period: "Oct 2022 – May 2024",
@@ -98,11 +98,11 @@ const Leadership = () => {
               <div className="lg:flex items-start gap-8">
                 <div className="lg:w-2/3">
                   <div className="flex items-center mb-6">
-                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-white mr-4`}>
+                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-dark-600 mr-4`}>
                       {role.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{role.title}</h3>
+                      <h3 className="text-xl font-bold text-dark-600 mb-2">{role.title}</h3>
                       <p className="text-primary-400 font-semibold mb-1">{role.organization}</p>
                       <p className="text-sm text-gray-400 mb-4">{role.period}</p>
                       <div className="flex gap-4 text-sm text-dark-500 mt-1">
@@ -119,7 +119,7 @@ const Leadership = () => {
                       {role.achievements.map((achievement, achIndex) => (
                         <li key={achIndex} className="flex items-start text-dark-600">
                           <span className="text-primary-500 mr-3 mt-1">•</span>
-                          <li key={achIndex} className="text-gray-300 text-sm">{achievement}</li>
+                          <li key={achIndex} className="text-dark-600 text-sm">{achievement}</li>
                         </li>
                       ))}
                     </ul>
@@ -140,7 +140,7 @@ const Leadership = () => {
                   </div>
                 </div>
 
-                <div className="lg:w-1/3 mt-8 lg:mt-0">
+                {/* <div className="lg:w-1/3 mt-8 lg:mt-0">
                   <div className="bg-white rounded-lg p-6 shadow-md">
                     <h4 className="font-semibold text-white mb-4">Impact Metrics</h4>
                     <div className="space-y-4">
@@ -156,14 +156,14 @@ const Leadership = () => {
                       ))}
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
         </motion.div>
 
         {/* Leadership Qualities Grid */}
-        <motion.div variants={itemVariants}>
+        {/* <motion.div variants={itemVariants}>
           <h3 className="text-3xl font-bold text-white text-center mb-12">
             Leadership <span className="gradient-text">Qualities</span>
           </h3>
@@ -183,10 +183,10 @@ const Leadership = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Leadership Philosophy */}
-        <motion.div variants={itemVariants} className="mt-16 text-center">
+        {/* <motion.div variants={itemVariants} className="mt-16 text-center">
           <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-xl p-8">
             <h3 className="text-2xl font-bold text-dark-800 mb-4">Leadership Philosophy</h3>
             <p className="text-dark-600 leading-relaxed max-w-4xl mx-auto">
@@ -196,10 +196,10 @@ const Leadership = () => {
               and deliver measurable results."
             </p>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Stats Summary */}
-        <motion.div variants={itemVariants} className="mt-16">
+        {/* <motion.div variants={itemVariants} className="mt-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { number: "15+", label: "Team Members Led" },
@@ -219,7 +219,7 @@ const Leadership = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </section>
   );

@@ -265,7 +265,7 @@ const Contact = () => {
                   <h4 className="font-semibold text-green-800">Currently Available</h4>
                 </div>
                 <p className="text-green-700 text-sm">
-                  Open to internship opportunities, research collaborations, and freelance projects. 
+                  Open to New grad roles (2026), Internship opportunities, startup collaborations, and freelance projects. 
                   Expected graduation: May 2026.
                 </p>
               </div>

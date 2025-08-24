@@ -33,7 +33,7 @@ const Footer = () => {
                 { name: 'Experience', href: '#experience' },
                 { name: 'Projects', href: '#projects' },
                 { name: 'Leadership', href: '#leadership' },
-                { name: 'Contact', href: '#contact' }
+                // { name: 'Contact', href: '#contact' }
               ].map((link) => (
                 <motion.a
                   key={link.name}
@@ -86,7 +86,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-gray-600 pt-8 mt-8 text-center">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center text-gray-300 mb-4 md:mb-0">
+            {/* <div className="flex items-center text-gray-300 mb-4 md:mb-0">
               <span>Made with</span>
               <motion.span
                 className="mx-2 text-red-500"
@@ -96,7 +96,7 @@ const Footer = () => {
                 <FaHeart />
               </motion.span>
               <span>by Sriram Vujjini</span>
-            </div>
+            </div> */}
             <p className="text-gray-400 text-sm">
               &copy; {currentYear} Sriram Vujjini. All rights reserved.
             </p>

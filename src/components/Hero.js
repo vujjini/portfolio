@@ -109,8 +109,7 @@ const Hero = () => {
               </h2>
               <p className="text-base md:text-lg text-gray-400 max-w-2xl lg:max-w-none leading-relaxed">
                 Computer Science student at USF with a passion for building innovative solutions 
-                using AI/ML, full-stack development, and cloud technologies. Currently working 
-                on cutting-edge research in Natural Language Processing.
+                using AI/ML, full-stack development, and cloud technologies.
               </p>
             </motion.div>
 
