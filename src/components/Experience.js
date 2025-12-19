@@ -11,10 +11,10 @@ const Experience = () => {
       period: "May 2024 – Aug 2024",
       type: "Internship",
       achievements: [
-        "Built a backend service using Python that ingests external API location data, increasing the application's search engine accuracy by 15%",
-        "Reduced external API costs by 30% by engineering a robust pipeline with efficient fallback logic, fuzzy matching algorithms, Redis caching and retry handling",
-        "Leveraged MySQL, PHP/Laravel migrations, and SQLAlchemy ORM to ensure efficient and seamless database operations",
-        "Standardized development and testing by containerizing the service locally with Docker and automating unit tests using Pytest in GitHub workflows"
+        "Enhanced platform search accuracy by 15% by developing an AWS Lambda microservice for data enrichment and configuring Elasticsearch for precise query filtering",
+        "Cut external API costs by 75% by engineering an efficient python pipeline with fallback logic and Redis caching.",
+        "Streamlined microservice deployment using Docker, GitHub Actions, and CI/CD pipelines under Agile workflows.",
+        "Secured consistent data persistence by implementing the MySQL migrations with PHP/Laravel."
       ],
       technologies: ["Python", "MySQL", "Redis", "Docker", "Laravel", "SQLAlchemy", "Pytest", "CI/CD"],
       color: "from-blue-500 to-cyan-600"
@@ -27,9 +27,9 @@ const Experience = () => {
       type: "Research",
       id: "research-assistant",
       achievements: [
-        "Co-authored NLP paper, developed Object-Oriented Python scripts for LLM evaluation, accelerating research by 30%",
-        "Built automated evaluation pipelines using Object-Oriented Python frameworks, reducing manual testing time by 40%",
-        "Fine-tuned LLaMA, GPT, RoBERTa, BERT models for logical reasoning, improving accuracy by 15%"
+        "Co-authored an NLP research paper on LLM reasoning, contributing to advancements in AI reasoning systems.",
+        "Automated 100+ experimental runs by developing object-oriented Python scripts that standardized LLM evaluations.",
+        "Developed scoring modules to generate interpretable metrics for assessing and comparing LLM reasoning outputs."
       ],
       technologies: ["Python", "NLP", "LLMs", "PyTorch", "TensorFlow", "BERT", "GPT"],
       color: "from-purple-500 to-indigo-600",
@@ -48,7 +48,7 @@ const Experience = () => {
       type: "Leadership",
       achievements: [
         "Built a web application that automated task delegation by 40% and enhanced staff support with an AI chatbot",
-        "Supervised a team of 15+ co-workers, managing 100+ events monthly ensuring seamless execution"
+        "Supervised a team of 10+ co-workers, managing 100+ events monthly to ensure seamless execution."
       ],
       technologies: ["React", "Python", "AI Chatbot", "Team Management"],
       color: "from-green-500 to-emerald-600"
