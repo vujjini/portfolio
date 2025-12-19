@@ -34,8 +34,8 @@ const Experience = () => {
       technologies: ["Python", "NLP", "LLMs", "PyTorch", "TensorFlow", "BERT", "GPT"],
       color: "from-purple-500 to-indigo-600",
       paper: {
-        title: "[Your Paper Title]",
-        conference: "Accepted at the 18th International Conference on Agents and Artificial Intelligence (ICAART 2026), Marbella, Spain",
+        title: "The Effect of Belief Boxes and Open-mindedness on LLM Persuasion",
+        conference: "Accepted at the ICAART 2026, Marbella, Spain",
         link: "https://www.arxiv.org/abs/2512.06573", // Add your arXiv link here
         description: "[Brief 1-2 sentence description of your research paper]"
       }
