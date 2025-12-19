@@ -25,13 +25,20 @@ const Experience = () => {
       location: "Tampa, FL",
       period: "Aug 2024 – Present",
       type: "Research",
+      id: "research-assistant",
       achievements: [
         "Co-authored NLP paper, developed Object-Oriented Python scripts for LLM evaluation, accelerating research by 30%",
         "Built automated evaluation pipelines using Object-Oriented Python frameworks, reducing manual testing time by 40%",
         "Fine-tuned LLaMA, GPT, RoBERTa, BERT models for logical reasoning, improving accuracy by 15%"
       ],
       technologies: ["Python", "NLP", "LLMs", "PyTorch", "TensorFlow", "BERT", "GPT"],
-      color: "from-purple-500 to-indigo-600"
+      color: "from-purple-500 to-indigo-600",
+      paper: {
+        title: "[Your Paper Title]",
+        conference: "Accepted at the 18th International Conference on Agents and Artificial Intelligence (ICAART 2026), Marbella, Spain",
+        link: "https://www.arxiv.org/abs/2512.06573", // Add your arXiv link here
+        description: "[Brief 1-2 sentence description of your research paper]"
+      }
     },
     {
       title: "Student Manager",
@@ -95,12 +102,69 @@ const Experience = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`relative flex items-center ${
+                className={`relative flex items-start ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
+                id={exp.id || `exp-${index}`}
               >
                 {/* Timeline dot */}
                 <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                
+                {/* Research paper preview tab */}
+                {exp.paper && (
+                  <motion.div 
+                    className="absolute right-[calc(100%+2rem)] md:right-[calc(100%-25rem)] top-1/2 -translate-y-1/2 z-10 group"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                    transition={{ delay: 0.3 }}
+                    css={{
+                      '@media (min-width: 768px)': {
+                        width: '36rem',
+                        transform: 'translateY(-10%) translateX(18%)'
+                      }
+                    }}
+                  >
+                    <a 
+                      href={exp.paper.link} 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block overflow-hidden rounded-lg shadow-xl border border-gray-700 hover:border-amber-400/50 transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      {/* Preview Image */}
+                      <div className="relative overflow-hidden bg-gray-800">
+                        <div className="h-72 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                          <div className="h-72">
+                            <img 
+                              src="/paper_preview.png" 
+                              alt="Research paper preview"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                        
+                        {/* Conference & Title Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
+                          <h4 className="text-sm font-semibold text-amber-300 mb-1 line-clamp-1">{exp.paper.conference}</h4>
+                          <p className="text-xs text-gray-200 line-clamp-1">{exp.paper.title}</p>
+                        </div>
+                        
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="inline-flex items-center px-3 py-1.5 bg-amber-500 text-white text-xs font-medium rounded-full">
+                            View Paper
+                            <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                    
+                    {/* Arrow pointer */}
+                    <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-amber-400/50"></div>
+                  </motion.div>
+                )}
 
                 {/* Content card */}
                 <div className={`ml-16 sm:ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>

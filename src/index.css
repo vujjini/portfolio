@@ -25,3 +25,7 @@
     @apply px-4 sm:px-6 lg:px-8;
   }
 }
+
+.md\:right-\[calc\(100\%-25rem\)\] {
+  top: 28%;
+}
