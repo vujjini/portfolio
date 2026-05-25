@@ -14,16 +14,16 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="App bg-white">
+      <div className="App bg-transparent text-white">
         <Navbar />
         <Hero />
-        <About />
+        {/* <About /> */}
         <Skills />
         {/* <Highlights /> */}
         <Experience />
         <Projects />
         <Leadership />
-        <Contact />
+        {/* <Contact /> */}
         <Footer />
       </div>
     </Router>

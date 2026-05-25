@@ -84,7 +84,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-black section-padding">
+    <section id="contact" className="py-20 bg-transparent section-padding">
       <motion.div
         className="max-w-6xl mx-auto"
         variants={containerVariants}
@@ -97,7 +97,7 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            I'm always open to discussing new opportunities, collaborations, or just having a chat about technology. 
+            I'm always open to discussing new opportunities, collaborations, or just having a chat about technology.
             Feel free to reach out through any of the channels below!
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-700">
               <h3 className="text-2xl font-bold text-white mb-6">Send me a message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -140,7 +140,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                     Subject *
@@ -156,7 +156,7 @@ const Contact = () => {
                     placeholder="What's this about?"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Message *
@@ -172,7 +172,7 @@ const Contact = () => {
                     placeholder="Tell me about your project, opportunity, or just say hello!"
                   />
                 </div>
-                
+
                 <motion.button
                   type="submit"
                   className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2 font-medium"
@@ -195,7 +195,7 @@ const Contact = () => {
                   {contactInfo.map((info, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-center p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
+                      className="flex items-center p-4 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors duration-200 border border-gray-600/20"
                       whileHover={{ x: 5 }}
                     >
                       <div className={`bg-gradient-to-r ${info.color} p-3 rounded-lg text-white mr-4`}>
@@ -214,7 +214,7 @@ const Contact = () => {
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-dark-600">{info.value}</p>
+                          <p className="text-gray-300">{info.value}</p>
                         )}
                       </div>
                     </motion.div>
@@ -226,7 +226,7 @@ const Contact = () => {
               <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl shadow-lg p-8 text-white">
                 <h3 className="text-xl font-bold mb-4">Quick Connect</h3>
                 <p className="mb-6 opacity-90">
-                  Looking for immediate collaboration or have a quick question? 
+                  Looking for immediate collaboration or have a quick question?
                   Connect with me directly on these platforms:
                 </p>
                 <div className="flex gap-4">
@@ -259,13 +259,13 @@ const Contact = () => {
               </div>
 
               {/* Availability */}
-              <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+              <div className="bg-green-950/20 border border-green-800/30 rounded-xl p-6">
                 <div className="flex items-center mb-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-                  <h4 className="font-semibold text-green-800">Currently Available</h4>
+                  <h4 className="font-semibold text-green-400">Currently Available</h4>
                 </div>
-                <p className="text-green-700 text-sm">
-                  Open to New grad roles (2026), Internship opportunities, startup collaborations, and freelance projects. 
+                <p className="text-green-300 text-sm">
+                  Open to New grad roles (2026), Internship opportunities, startup collaborations, and freelance projects.
                   Expected graduation: May 2026.
                 </p>
               </div>
