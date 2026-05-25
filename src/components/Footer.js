@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-            <div className="space-y-2">
+            <div className="flex flex-col space-y-1.5 items-start">
               {[
                 { name: 'About', href: '#about' },
                 { name: 'Skills', href: '#skills' },
@@ -38,7 +38,7 @@ const Footer = () => {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-300 hover:text-primary-400 transition-colors duration-200 p-2 rounded-full hover:bg-gray-800"
+                  className="text-gray-300 hover:text-primary-400 transition-colors duration-200 py-1.5 px-3 rounded-lg hover:bg-white/5"
                   whileHover={{ x: 5 }}
                 >
                   {link.name}

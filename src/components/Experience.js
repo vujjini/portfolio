@@ -209,9 +209,9 @@ const Experience = () => {
                 {/* Research Paper Section (if applicable) */}
                 {activeExp.paper && (
                   <div className="mb-6 p-4 rounded-xl bg-gray-900/60 border border-gray-700/60 hover:border-amber-500/30 transition-all duration-300 group">
-                    <div className="flex flex-col sm:flex-row gap-4 items-center">
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                       {/* Paper Thumbnail */}
-                      <div className="w-full sm:w-32 h-20 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0 border border-gray-700">
+                      <div className="w-full sm:w-32 aspect-video sm:aspect-auto sm:h-20 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0 border border-gray-700">
                         <img
                           src="/paper_preview.png"
                           alt="Paper Preview"

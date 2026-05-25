@@ -133,10 +133,10 @@ const Skills = () => {
               className="bg-gray-800 p-6 rounded-xl shadow-lg card-hover border border-gray-700"
             >
               <div className="flex items-center mb-6">
-                <div className={`bg-gradient-to-r ${category.color} p-3 rounded-lg text-white mr-4`}>
+                <div className={`bg-gradient-to-r ${category.color} p-3 rounded-lg text-white mr-4 flex-shrink-0`}>
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">{category.title}</h3>
+                <h3 className="text-xl font-bold text-white leading-tight">{category.title}</h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
@@ -161,7 +161,7 @@ const Skills = () => {
 
         {/* Additional Skills */}
         <motion.div variants={itemVariants} className="mt-16 text-center">
-          <h3 className="text-2xl font-semibold text-dark-800 mb-6">Additional Expertise</h3>
+          <h3 className="text-2xl font-bold text-white mb-6">Additional Expertise</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[
               "Machine Learning", "Deep Learning", "Natural Language Processing", 
@@ -171,7 +171,7 @@ const Skills = () => {
             ].map((skill) => (
               <motion.span
                 key={skill}
-                className="bg-white px-4 py-2 rounded-full text-dark-700 shadow-md border border-gray-200"
+                className="bg-gray-800/60 border border-gray-700 text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 backdrop-blur-sm shadow-md"
                 whileHover={{ scale: 1.05, y: -2 }}
               >
                 {skill}
