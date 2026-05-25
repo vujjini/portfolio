@@ -15,7 +15,7 @@ export const heroConfig = {
     thumbnailUrl: "/project_demo_thumbnail.png"
   },
   links: {
-    resume: "/resume.pdf", // User can upload a resume.pdf in public folder
+    resume: "/Resume_Sriram_Vujjini.pdf",
     github: "https://github.com/vujjini",
     linkedin: "https://linkedin.com/in/sriram-vujjini/"
   }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileDownload, FaCheckCircle, FaPlay, FaExternalLinkAlt } from 'react-icons/fa';
 import { heroConfig } from '../config/hero';
 import PretextHeaderWrap from './PretextHeaderWrap';
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   // Helper to parse Loom URL and return embed version
   const getLoomEmbedUrl = (url) => {
@@ -139,17 +140,15 @@ const Hero = () => {
               className="flex flex-wrap justify-center lg:justify-start gap-4 w-full"
             >
               {heroConfig.links.resume && (
-                <motion.a
-                  href={heroConfig.links.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-primary-500/20 hover:from-primary-500 hover:to-primary-400 transition-all duration-200"
+                <motion.button
+                  onClick={() => setIsResumeOpen(true)}
+                  className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-primary-500/20 hover:from-primary-500 hover:to-primary-400 transition-all duration-200 cursor-pointer"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaFileDownload size={16} />
                   <span>Resume</span>
-                </motion.a>
+                </motion.button>
               )}
               {heroConfig.links.github && (
                 <motion.a
@@ -312,6 +311,98 @@ const Hero = () => {
           </svg>
         </motion.div>
       </motion.div>
+
+      {/* Resume Modal */}
+      <AnimatePresence>
+        {isResumeOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 md:p-8"
+            onClick={() => setIsResumeOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.95, y: 20, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="relative w-full max-w-5xl h-[85vh] bg-gray-950 border border-white/10 rounded-2xl flex flex-col shadow-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Top ambient lights in modal */}
+              <div className="absolute top-0 left-1/4 w-96 h-24 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute top-0 right-1/4 w-96 h-24 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+              {/* Modal Header */}
+              <div className="relative flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gray-900/60 backdrop-blur-md z-10">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary-500/20 text-primary-400 p-2 rounded-lg">
+                    <FaFileDownload size={16} />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">Sriram Vujjini - Resume</h3>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Interactive PDF Preview</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {/* Download Link */}
+                  <motion.a
+                    href={heroConfig.links.resume}
+                    download
+                    className="flex items-center gap-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 px-3.5 py-1.5 rounded-lg text-xs font-semibold border border-gray-700 transition-colors cursor-pointer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <FaFileDownload size={12} />
+                    <span className="hidden sm:inline">Download</span>
+                  </motion.a>
+                  
+                  {/* Open in New Tab */}
+                  <motion.a
+                    href={heroConfig.links.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 bg-gray-850 hover:bg-gray-800 text-gray-300 px-3.5 py-1.5 rounded-lg text-xs font-semibold border border-gray-800 transition-colors cursor-pointer"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <FaExternalLinkAlt size={11} />
+                    <span className="hidden sm:inline">Open Fullscreen</span>
+                  </motion.a>
+
+                  {/* Close button */}
+                  <motion.button
+                    onClick={() => setIsResumeOpen(false)}
+                    className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer ml-1"
+                    whileHover={{ rotate: 90 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Modal Body / PDF Iframe */}
+              <div className="flex-1 w-full bg-gray-900 overflow-hidden relative">
+                {/* Loader */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-950/40 z-0">
+                  <div className="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+
+                <iframe
+                  src={`${heroConfig.links.resume}#toolbar=0&navpanes=0`}
+                  title="Sriram Vujjini Resume"
+                  className="relative z-10 w-full h-full border-none shadow-inner animate-fade-in"
+                ></iframe>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
