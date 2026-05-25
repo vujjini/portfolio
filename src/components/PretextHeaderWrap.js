@@ -169,6 +169,8 @@ const PretextHeaderWrap = ({
     return { nameLines: nameResult, headlineLines: headlineResult, totalHeight: totalH };
   }, [preparedName, preparedHeadline, containerWidth, nameLineHeight, headlineLineHeight, gap]);
 
+  const isMobile = containerWidth > 0 && containerWidth < 768;
+
   const avatarStyle = {
     position: 'absolute',
     left: 0,
@@ -177,6 +179,42 @@ const PretextHeaderWrap = ({
     height: totalHeight,
     zIndex: 10,
   };
+
+  if (isMobile) {
+    return (
+      <div ref={containerRef} className="w-full flex flex-col items-center text-center">
+        {/* Hidden elements for style measurements */}
+        <div className="absolute opacity-0 pointer-events-none select-none" style={{ top: -9999 }}>
+          <span ref={nameMeasureRef} className={nameClass}>Template</span>
+          <span ref={headlineMeasureRef} className={headlineClass}>Template</span>
+        </div>
+
+        {avatarUrl && (
+          <div className="relative group mb-6 w-28 h-28 sm:w-32 sm:h-32 flex-shrink-0">
+            {/* Glowing ring animation */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10 shadow-2xl backdrop-blur-md">
+              <img
+                src={avatarUrl}
+                alt="Profile Avatar"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="w-full flex flex-col items-center">
+          <div className={`${nameClass} whitespace-normal leading-tight text-center w-full`}>
+            {nameText}
+          </div>
+          <div style={{ height: 12 }} />
+          <div className={`${headlineClass} whitespace-normal leading-snug text-center w-full`}>
+            {headlineText}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="relative w-full" style={{ minHeight: totalHeight }}>

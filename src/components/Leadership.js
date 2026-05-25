@@ -97,15 +97,14 @@ const Leadership = () => {
             <div key={index} className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
               <div className="lg:flex items-start gap-8">
                 <div className="lg:w-2/3">
-                  <div className="flex items-center mb-6">
-                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-white mr-4`}>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center mb-6">
+                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-white mb-4 sm:mb-0 mr-0 sm:mr-4 flex-shrink-0`}>
                       {role.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{role.title}</h3>
-                      <p className="text-primary-400 font-semibold mb-1">{role.organization}</p>
-                      <p className="text-sm text-gray-400 mb-4">{role.period}</p>
-                      <div className="flex gap-4 text-sm text-gray-400 mt-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{role.title}</h3>
+                      <p className="text-primary-400 font-semibold mb-1.5">{role.organization}</p>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm text-gray-400 font-medium">
                         <span>{role.period}</span>
                         <span>•</span>
                         <span>{role.location}</span>
@@ -114,12 +113,12 @@ const Leadership = () => {
                   </div>
 
                   <div className="mb-6">
-                    <h4 className="font-semibold text-white mb-2">Key Achievements:</h4>
-                    <ul className="space-y-3">
+                    <h4 className="font-semibold text-white mb-3">Key Achievements:</h4>
+                    <ul className="space-y-3 pl-1">
                       {role.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="flex items-start text-gray-300">
-                          <span className="text-primary-500 mr-3 mt-1">•</span>
-                          <li key={achIndex} className="text-gray-300 text-sm">{achievement}</li>
+                        <li key={achIndex} className="flex items-start text-gray-300 text-sm">
+                          <span className="text-primary-500 mr-3 mt-1.5 flex-shrink-0 text-[10px]">•</span>
+                          <span>{achievement}</span>
                         </li>
                       ))}
                     </ul>

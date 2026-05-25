@@ -259,7 +259,7 @@ const Hero = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 mt-5">
+                <div className="flex flex-col xs:flex-row gap-3 mt-5">
                   <motion.a
                     href={heroConfig.demo.loomUrl}
                     target="_blank"
