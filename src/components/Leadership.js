@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaTrophy, FaChalkboardTeacher, FaHandshake } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
 
 const Leadership = () => {
   const leadershipRoles = [
@@ -26,32 +26,32 @@ const Leadership = () => {
     }
   ];
 
-  const leadershipQualities = [
-    {
-      title: "Team Leadership",
-      description: "Successfully led cross-functional teams of 4-15+ members across multiple projects and organizations",
-      icon: <FaUsers />,
-      color: "from-purple-500 to-pink-600"
-    },
-    {
-      title: "Technical Mentorship",
-      description: "Organized and conducted 5+ technical workshops, sharing knowledge and best practices with peers",
-      icon: <FaChalkboardTeacher />,
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      title: "Project Management",
-      description: "Managed 100+ events monthly and coordinated complex technical projects with measurable outcomes",
-      icon: <FaTrophy />,
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      title: "Stakeholder Engagement",
-      description: "Achieved 95% user satisfaction and 15% engagement increase through effective communication",
-      icon: <FaHandshake />,
-      color: "from-cyan-500 to-blue-500"
-    }
-  ];
+  // const leadershipQualities = [
+  //   {
+  //     title: "Team Leadership",
+  //     description: "Successfully led cross-functional teams of 4-15+ members across multiple projects and organizations",
+  //     icon: <FaUsers />,
+  //     color: "from-purple-500 to-pink-600"
+  //   },
+  //   {
+  //     title: "Technical Mentorship",
+  //     description: "Organized and conducted 5+ technical workshops, sharing knowledge and best practices with peers",
+  //     icon: <FaChalkboardTeacher />,
+  //     color: "from-green-500 to-emerald-600"
+  //   },
+  //   {
+  //     title: "Project Management",
+  //     description: "Managed 100+ events monthly and coordinated complex technical projects with measurable outcomes",
+  //     icon: <FaTrophy />,
+  //     color: "from-orange-500 to-red-500"
+  //   },
+  //   {
+  //     title: "Stakeholder Engagement",
+  //     description: "Achieved 95% user satisfaction and 15% engagement increase through effective communication",
+  //     icon: <FaHandshake />,
+  //     color: "from-cyan-500 to-blue-500"
+  //   }
+  // ];
 
   const containerVariants = {
     hidden: { opacity: 0 },

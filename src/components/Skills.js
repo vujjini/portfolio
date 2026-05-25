@@ -8,7 +8,7 @@ import {
   SiJavascript, SiCplusplus, SiAngular, SiFlask, 
   SiDjango, SiSpringboot, SiFastapi, SiTailwindcss, SiMui,
   SiPostgresql, SiMysql, SiMongodb, SiRedis, SiTensorflow,
-  SiPytorch, SiScikitlearn, SiPandas, SiNumpy
+  SiPytorch, SiScikitlearn
 } from 'react-icons/si';
 
 const Skills = () => {
