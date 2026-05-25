@@ -23,7 +23,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-900 section-padding">
+    <section id="about" className="py-20 bg-transparent section-padding">
       <motion.div
         className="max-w-6xl mx-auto"
         variants={containerVariants}

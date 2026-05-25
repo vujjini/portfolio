@@ -1,8 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaChartLine } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaBriefcase, FaChartLine } from 'react-icons/fa';
 
 const Experience = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const handleSelectTab = (e) => {
+      const idx = e.detail.index;
+      if (typeof idx === 'number') {
+        setActiveTab(idx);
+        setIsExpanded(false);
+      }
+    };
+    window.addEventListener('select-experience-tab', handleSelectTab);
+    return () => window.removeEventListener('select-experience-tab', handleSelectTab);
+  }, []);
+
   const experiences = [
     {
       title: "Software Engineer Intern (Backend)",
@@ -11,12 +26,12 @@ const Experience = () => {
       period: "May 2024 – Aug 2024",
       type: "Internship",
       achievements: [
-        "Built a backend service using Python that ingests external API location data, increasing the application's search engine accuracy by 15%",
-        "Reduced external API costs by 30% by engineering a robust pipeline with efficient fallback logic, fuzzy matching algorithms, Redis caching and retry handling",
-        "Leveraged MySQL, PHP/Laravel migrations, and SQLAlchemy ORM to ensure efficient and seamless database operations",
-        "Standardized development and testing by containerizing the service locally with Docker and automating unit tests using Pytest in GitHub workflows"
+        "Enhanced platform search accuracy by 15% by developing an AWS Lambda microservice for data enrichment and configuring Elasticsearch for precise query filtering",
+        "Cut external API costs by 75% by engineering an efficient python pipeline with fallback logic and Redis caching.",
+        "Streamlined microservice deployment using Docker, GitHub Actions, and CI/CD pipelines under Agile workflows.",
+        "Secured consistent data persistence by implementing the MySQL migrations with PHP/Laravel."
       ],
-      technologies: ["Python", "MySQL", "Redis", "Docker", "Laravel", "SQLAlchemy", "Pytest", "CI/CD"],
+      technologies: ["Python", "MySQL", "Redis", "Docker", "PHP/Laravel", "AWS Lambda", "SQLAlchemy", "Pytest", "CI/CD"],
       color: "from-blue-500 to-cyan-600"
     },
     {
@@ -25,13 +40,20 @@ const Experience = () => {
       location: "Tampa, FL",
       period: "Aug 2024 – Present",
       type: "Research",
+      id: "research-assistant",
       achievements: [
-        "Co-authored NLP paper, developed Object-Oriented Python scripts for LLM evaluation, accelerating research by 30%",
-        "Built automated evaluation pipelines using Object-Oriented Python frameworks, reducing manual testing time by 40%",
-        "Fine-tuned LLaMA, GPT, RoBERTa, BERT models for logical reasoning, improving accuracy by 15%"
+        "Co-authored an NLP research paper on LLM reasoning, contributing to advancements in AI reasoning systems.",
+        "Automated 100+ experimental runs by developing object-oriented Python scripts that standardized LLM evaluations.",
+        "Developed scoring modules to generate interpretable metrics for assessing and comparing LLM reasoning outputs."
       ],
       technologies: ["Python", "NLP", "LLMs", "PyTorch", "TensorFlow", "BERT", "GPT"],
-      color: "from-purple-500 to-indigo-600"
+      color: "from-purple-500 to-indigo-600",
+      paper: {
+        title: "The Effect of Belief Boxes and Open-mindedness on LLM Persuasion",
+        conference: "Accepted at the ICAART 2026, Marbella, Spain",
+        link: "https://www.arxiv.org/abs/2512.06573",
+        description: "An NLP paper studying belief changes and open-mindedness profiles in Multi-Agent Large Language Model persuasion systems."
+      }
     },
     {
       title: "Student Manager",
@@ -40,13 +62,20 @@ const Experience = () => {
       period: "Jan 2024 – Present",
       type: "Leadership",
       achievements: [
-        "Built a web application that automated task delegation by 40% and enhanced staff support with an AI chatbot",
-        "Supervised a team of 15+ co-workers, managing 100+ events monthly ensuring seamless execution"
+        "Built a web application that reduced administrative work by 40% and streamlined real time operational support with a RAG chatbot",
+        "Supervised a team of 10+ co-workers, managing 100+ events monthly to ensure seamless execution."
       ],
       technologies: ["React", "Python", "AI Chatbot", "Team Management"],
       color: "from-green-500 to-emerald-600"
     }
   ];
+
+  const handleTabChange = (index) => {
+    setActiveTab(index);
+    setIsExpanded(false);
+  };
+
+  const activeExp = experiences[activeTab];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -60,15 +89,15 @@ const Experience = () => {
   };
 
   const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1
     }
   };
 
   return (
-    <section id="experience" className="py-20 bg-gray-900 section-padding">
+    <section id="experience" className="py-20 bg-transparent section-padding">
       <motion.div
         className="max-w-6xl mx-auto"
         variants={containerVariants}
@@ -76,105 +105,163 @@ const Experience = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
+        {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Professional <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Building impactful solutions through internships, research, and leadership roles 
-            that drive innovation and deliver measurable results.
+            Building impactful solutions through internships, research, and leadership roles.
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-200 to-primary-400"></div>
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+        {/* Tabbed Experience Content */}
+        <div className="grid md:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Vertical/Horizontal Tabs */}
+          <div className="md:col-span-4 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible pb-4 md:pb-0 space-x-4 md:space-x-0 md:space-y-3 scrollbar-thin">
+            {experiences.map((exp, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleTabChange(idx)}
+                className={`w-full text-left px-5 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-between border whitespace-nowrap md:whitespace-normal cursor-pointer ${activeTab === idx
+                  ? 'bg-gray-800 border-primary-500 text-white shadow-lg shadow-primary-500/10'
+                  : 'bg-transparent border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800/40 hover:border-gray-700'
+                  }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <span>{exp.company}</span>
+                <span className={`hidden md:inline text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${activeTab === idx
+                  ? 'bg-primary-500/20 text-primary-300'
+                  : 'bg-gray-800 text-gray-500'
+                  }`}>
+                  {exp.type}
+                </span>
+              </button>
+            ))}
+          </div>
 
-                {/* Content card */}
-                <div className={`ml-16 sm:ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
-                  <motion.div
-                    className="bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg ml-4 sm:ml-8 card-hover border border-gray-700"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    {/* Header */}
-                    <div className="mb-3 sm:mb-4">
-                      <div className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-white bg-gradient-to-r ${exp.color} mb-2 sm:mb-3`}>
-                        <FaBriefcase className="mr-1 sm:mr-2 text-xs sm:text-sm" />
-                        {exp.type}
+          {/* Right Column: Experience Details Card */}
+          <div className="md:col-span-8 w-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+                className="bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-700 relative overflow-hidden"
+              >
+                {/* Top Accent Line */}
+                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${activeExp.color}`}></div>
+
+                {/* Title & Organization Header */}
+                <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-snug">
+                      {activeExp.title}
+                    </h3>
+                    <p className="text-lg font-bold text-primary-400 mt-1">
+                      {activeExp.company}
+                    </p>
+                  </div>
+                  <div className="text-left md:text-right">
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${activeExp.color} mb-2 shadow-md`}>
+                      <FaBriefcase size={12} />
+                      <span>{activeExp.type}</span>
+                    </span>
+                    <p className="text-sm text-gray-400 font-medium">
+                      {activeExp.period} • {activeExp.location}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Collapsible Key Achievements */}
+                <div className="mb-6">
+                  <h4 className="font-semibold text-white mb-4 flex items-center text-base sm:text-lg">
+                    <FaChartLine className="mr-2 text-primary-500" />
+                    Key Achievements
+                  </h4>
+                  <ul className="space-y-4 pl-1">
+                    {(isExpanded ? activeExp.achievements : activeExp.achievements.slice(0, 2)).map((achievement, idx) => (
+                      <motion.li
+                        key={idx}
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-start text-gray-300 leading-relaxed text-sm sm:text-base"
+                      >
+                        <span className="text-primary-500 mr-3 mt-1.5 flex-shrink-0 text-[10px]">•</span>
+                        <span>{achievement}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  {/* Show More / Show Less Toggle Button */}
+                  {activeExp.achievements.length > 2 && (
+                    <button
+                      onClick={() => setIsExpanded(!isExpanded)}
+                      className="mt-4 text-sm font-semibold text-primary-400 hover:text-primary-300 transition-colors flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>{isExpanded ? 'Show Less Details' : `Show ${activeExp.achievements.length - 2} More Details`}</span>
+                      <span>{isExpanded ? '↑' : '↓'}</span>
+                    </button>
+                  )}
+                </div>
+
+                {/* Research Paper Section (if applicable) */}
+                {activeExp.paper && (
+                  <div className="mb-6 p-4 rounded-xl bg-gray-900/60 border border-gray-700/60 hover:border-amber-500/30 transition-all duration-300 group">
+                    <div className="flex flex-col sm:flex-row gap-4 items-center">
+                      {/* Paper Thumbnail */}
+                      <div className="w-full sm:w-32 h-20 rounded-lg overflow-hidden bg-gray-800 flex-shrink-0 border border-gray-700">
+                        <img
+                          src="/paper_preview.png"
+                          alt="Paper Preview"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">{exp.title}</h3>
-                      <p className="text-primary-400 font-semibold text-sm sm:text-base">{exp.company}</p>
-                      <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">{exp.period} • {exp.location}</p>
-                    </div>
-
-                    {/* Achievements */}
-                    <div className="mb-3 sm:mb-4">
-                      <h4 className="font-semibold text-white mb-2 sm:mb-3 flex items-center text-sm sm:text-base">
-                        <FaChartLine className="mr-1 sm:mr-2 text-primary-500 text-sm" />
-                        Key Achievements
-                      </h4>
-                      <ul className="space-y-3 sm:space-y-2 list-disc list-inside pl-2 sm:pl-0">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="text-gray-300 leading-relaxed marker:text-primary-400 text-sm sm:text-base pr-2">{achievement}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="font-semibold text-white mb-2 text-sm sm:text-base">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
-                        {exp.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="bg-primary-900/50 text-primary-300 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium border border-primary-700/50"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                      {/* Paper Info */}
+                      <div className="flex-1 min-w-0">
+                        <span className="inline-block text-[9px] font-bold tracking-widest text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20 mb-1.5">
+                          {activeExp.paper.conference}
+                        </span>
+                        <h5 className="text-sm font-bold text-white leading-snug truncate group-hover:text-amber-300 transition-colors">
+                          {activeExp.paper.title}
+                        </h5>
+                        <a
+                          href={activeExp.paper.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-1.5 inline-flex items-center text-xs font-semibold text-amber-400 hover:underline gap-1"
+                        >
+                          <span>Read arXiv Publication</span>
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
+                )}
+
+                {/* Technologies Badges */}
+                <div className="border-t border-gray-700/60 pt-5">
+                  <h4 className="font-semibold text-white mb-3 text-xs uppercase tracking-wider text-gray-400">
+                    Technologies Used
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {activeExp.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-primary-950/20 text-primary-300 px-3 py-1 rounded-full text-xs font-medium border border-primary-800/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
-            ))}
+            </AnimatePresence>
           </div>
         </div>
-
-        {/* Stats Section */}
-        {/* <motion.div variants={itemVariants} className="mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: "30%", label: "Research Acceleration" },
-              { number: "40%", label: "Task Automation" },
-              { number: "15%", label: "Accuracy Improvement" },
-              { number: "100+", label: "Events Managed" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-4 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg"
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">
-                  {stat.number}
-                </div>
-                <div className="text-sm text-dark-600">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div> */}
       </motion.div>
     </section>
   );

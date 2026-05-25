@@ -73,7 +73,7 @@ const Leadership = () => {
   };
 
   return (
-    <section id="leadership" className="py-20 bg-gray-900 section-padding">
+    <section id="leadership" className="py-20 bg-transparent section-padding">
       <motion.div
         className="max-w-7xl mx-auto"
         variants={containerVariants}
@@ -94,18 +94,18 @@ const Leadership = () => {
         {/* Main Leadership Role */}
         <motion.div variants={itemVariants} className="mb-16">
           {leadershipRoles.map((role, index) => (
-            <div key={index} className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-8 shadow-lg">
+            <div key={index} className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
               <div className="lg:flex items-start gap-8">
                 <div className="lg:w-2/3">
                   <div className="flex items-center mb-6">
-                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-dark-600 mr-4`}>
+                    <div className={`bg-gradient-to-r ${role.color} p-4 rounded-lg text-white mr-4`}>
                       {role.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-dark-600 mb-2">{role.title}</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">{role.title}</h3>
                       <p className="text-primary-400 font-semibold mb-1">{role.organization}</p>
                       <p className="text-sm text-gray-400 mb-4">{role.period}</p>
-                      <div className="flex gap-4 text-sm text-dark-500 mt-1">
+                      <div className="flex gap-4 text-sm text-gray-400 mt-1">
                         <span>{role.period}</span>
                         <span>•</span>
                         <span>{role.location}</span>
@@ -117,9 +117,9 @@ const Leadership = () => {
                     <h4 className="font-semibold text-white mb-2">Key Achievements:</h4>
                     <ul className="space-y-3">
                       {role.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="flex items-start text-dark-600">
+                        <li key={achIndex} className="flex items-start text-gray-300">
                           <span className="text-primary-500 mr-3 mt-1">•</span>
-                          <li key={achIndex} className="text-dark-600 text-sm">{achievement}</li>
+                          <li key={achIndex} className="text-gray-300 text-sm">{achievement}</li>
                         </li>
                       ))}
                     </ul>
@@ -131,7 +131,7 @@ const Leadership = () => {
                       {role.skills.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="px-3 py-1 bg-white text-dark-600 text-sm rounded-full font-medium shadow-sm border border-gray-200"
+                          className="px-3 py-1 bg-gray-700/50 text-gray-300 text-sm rounded-full font-medium border border-gray-600/30"
                         >
                           {skill}
                         </span>

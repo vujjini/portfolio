@@ -14,21 +14,20 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'About', href: '#about' },
+    { name: 'About', href: '#home' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Leadership', href: '#leadership' },
-    { name: 'Contact', href: '#contact' },
+    // { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0b0f19]/90 border-b border-white/10 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        }`}
     >
       <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-4 min-w-0">
@@ -48,7 +47,7 @@ const Navbar = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-dark-600 hover:text-primary-600 transition-colors duration-200 font-medium"
+                className="text-gray-300 hover:text-primary-400 transition-colors duration-200 font-medium"
                 whileHover={{ y: -2 }}
               >
                 {item.name}
@@ -63,9 +62,9 @@ const Navbar = () => {
             style={{ minWidth: '32px' }}
           >
             <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-col justify-around mx-auto">
-              <span className={`block h-0.5 w-5 sm:w-6 bg-dark-600 transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2 sm:translate-y-2.5' : ''}`}></span>
-              <span className={`block h-0.5 w-5 sm:w-6 bg-dark-600 transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block h-0.5 w-5 sm:w-6 bg-dark-600 transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2 sm:-translate-y-2.5' : ''}`}></span>
+              <span className={`block h-0.5 w-5 sm:w-6 bg-white transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2 sm:translate-y-2.5' : ''}`}></span>
+              <span className={`block h-0.5 w-5 sm:w-6 bg-white transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block h-0.5 w-5 sm:w-6 bg-white transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2 sm:-translate-y-2.5' : ''}`}></span>
             </div>
           </button>
         </div>
@@ -75,14 +74,14 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 absolute top-full left-0 right-0 shadow-lg"
+            className="md:hidden bg-[#0b0f19]/95 backdrop-blur-md border-t border-white/10 absolute top-full left-0 right-0 shadow-lg"
           >
             <div className="py-4 px-4 space-y-4 max-w-full">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-dark-600 hover:text-primary-600 transition-colors duration-200 font-medium py-2 px-2 rounded-lg hover:bg-gray-100"
+                  className="block text-gray-300 hover:text-primary-400 transition-colors duration-200 font-medium py-2 px-2 rounded-lg hover:bg-white/5"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}

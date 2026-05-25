@@ -107,7 +107,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-black section-padding">
+    <section id="skills" className="py-20 bg-transparent section-padding">
       <motion.div
         className="max-w-7xl mx-auto"
         variants={containerVariants}
