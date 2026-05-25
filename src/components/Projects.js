@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaPlay, FaChartBar, FaRocket, FaRobot, FaHeartbeat } from 'react-icons/fa';
+import { FaGithub, FaPlay, FaChartBar, FaRobot, FaHeartbeat } from 'react-icons/fa';
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState(0);
