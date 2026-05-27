@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 // import About from './components/About';
@@ -25,6 +26,7 @@ function App() {
         <Leadership />
         {/* <Contact /> */}
         <Footer />
+        <Analytics />
       </div>
     </Router>
   );
