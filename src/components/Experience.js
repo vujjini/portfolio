@@ -23,7 +23,7 @@ const Experience = () => {
       title: "Software Engineer Intern (Backend)",
       company: "Givelify",
       location: "Remote",
-      period: "May 2025 – Aug 2025 (returning May 2026 - Aug 2026)",
+      period: "May 2025 – Aug 2025 (returning Summer 2026 to work on their payments team)",
       type: "Internship",
       achievements: [
         "Enhanced platform search accuracy by 15% by developing an AWS Lambda microservice for data enrichment and configuring Elasticsearch for precise query filtering",
