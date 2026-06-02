@@ -8,7 +8,7 @@ import {
   SiJavascript, SiCplusplus, SiAngular, SiFlask, 
   SiDjango, SiSpringboot, SiFastapi, SiTailwindcss, SiMui,
   SiPostgresql, SiMysql, SiMongodb, SiRedis, SiTensorflow,
-  SiPytorch, SiScikitlearn
+  SiPytorch, SiScikitlearn, SiTypescript
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -30,6 +30,7 @@ const Skills = () => {
       icon: <FaReact className="text-2xl" />,
       color: "from-cyan-500 to-blue-500",
       skills: [
+        { name: "TypeScript", icon: SiTypescript },
         { name: "React JS", icon: FaReact },
         { name: "Angular", icon: SiAngular },
         { name: "React Native", icon: FaReact },
@@ -58,7 +59,8 @@ const Skills = () => {
         { name: "PyTorch", icon: SiPytorch },
         { name: "Scikit-learn", icon: SiScikitlearn },
         { name: "Hugging Face", icon: FaBrain },
-        { name: "LangChain", icon: FaBrain }
+        { name: "LangChain", icon: FaBrain },
+        { name: "RAG", icon: FaBrain }
       ]
     },
     {
