@@ -25,7 +25,7 @@ const Projects = () => {
       title: "Operational Assistant AI",
       description: "RAG-based system that automates operational decision-making using logs and SOPs. Demo includes system design, architecture, and a quick walkthrough.",
       longDescription: "Designed and built a Retrieval-Augmented Generation (RAG) assistant to automate campus operations. The solution parses semi-structured server logs and university Standard Operating Procedures (SOPs), storing document embeddings in a vector database for semantic search. Integrates custom prompt orchestration to recommend operational actions in real-time, reducing response latency.",
-      technologies: ["Python", "FastAPI", "OpenAI/Gemini API", "LangChain", "Vector Store", "Loom", "RAG"],
+      technologies: ["Python", "FastAPI", "TypeScript", "OpenAI/Gemini API", "LangChain", "Vector Store", "Loom", "RAG"],
       achievements: [
         "Automated operational recommendations with high matching accuracy",
         "Parsed logs and standard operating procedures (SOPs) into indexed vector store",
